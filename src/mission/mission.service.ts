@@ -11,7 +11,7 @@ export class MissionService {
     { id: 6, codename: 'GHOST_RIDER', status: 'COMPLETED' },
   ];
   getSummary() {
-    const summary = {};
+    const summary = { ACTIVE:0,COMPLETED:0,FAILED:0};
     for (let i = 0; i < this.missions.length; i++) {
       const status = this.missions[i].status;
 
