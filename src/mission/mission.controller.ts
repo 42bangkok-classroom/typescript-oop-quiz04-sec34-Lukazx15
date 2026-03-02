@@ -6,7 +6,7 @@ export class MissionController {
   constructor(private readonly missionService: MissionService) {}
 
   @Get('summary')
-  getMissionSummary() {
+  getSummary() {
     return this.missionService.getSummary();
   }
 }
