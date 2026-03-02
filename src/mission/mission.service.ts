@@ -10,17 +10,16 @@ export class MissionService {
     { id: 5, codename: 'ECHO_FALLS', status: 'COMPLETED' },
     { id: 6, codename: 'GHOST_RIDER', status: 'COMPLETED' },
   ];
-  getSummary() {
-    const summary = { ACTIVE:0,COMPLETED:0,FAILED:0};
+    getSummary() {
+        const summary = {
+        ACTIVE: 0,
+        COMPLETED: 0,
+        FAILED: 0
+    };
     for (let i = 0; i < this.missions.length; i++) {
-      const status = this.missions[i].status;
-
-      if (summary[status] == undefined) {
-        summary[status] = 1;
-      } else {
-        summary[status] = summary[status] + 1;
-      }
-    }
+        const status = this.missions[i].status;
+            summary[status] = summary[status] + 1;
+        }
     return summary;
-  }
+    }
 }
