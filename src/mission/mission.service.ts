@@ -6,7 +6,7 @@ export class MissionService {
     id: number;
     codename: string;
     status: 'ACTIVE' | 'COMPLETED' | 'FAILED';
-    }   [] = [
+  }[] = [
     { id: 1, codename: 'OPERATION_STORM', status: 'ACTIVE' },
     { id: 2, codename: 'SILENT_SNAKE', status: 'COMPLETED' },
     { id: 3, codename: 'RED_DAWN', status: 'FAILED' },
@@ -15,8 +15,8 @@ export class MissionService {
     { id: 6, codename: 'GHOST_RIDER', status: 'COMPLETED' },
   ];
 
-  getSummary(): Record<string, number> {
-    const summary: Record<string, number> = {
+  getSummary(): Record<'ACTIVE' | 'COMPLETED' | 'FAILED', number> {
+    const summary: Record<'ACTIVE' | 'COMPLETED' | 'FAILED', number> = {
       ACTIVE: 0,
       COMPLETED: 0,
       FAILED: 0,
