@@ -76,4 +76,33 @@ export class MissionService {
 
     return result;
   }
+  //4
+  create(body: any) {
+    const filePath = join(process.cwd(), 'data', 'missions.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const missions = JSON.parse(raw) as unknown as IMission[];
+
+    // หา id ล่าสุด
+    const lastId =
+      missions.length > 0 ? Math.max(...missions.map((m) => Number(m.id))) : 0;
+
+    const newMission: IMission = {
+      id: String(lastId + 1),
+      codename: body.codename,
+      status: 'ACTIVE',
+      targetName: body.targetName,
+      riskLevel: body.riskLevel,
+      startDate: body.startDate,
+      endDate: null,
+    };
+
+    // push ลง array
+    missions.push(newMission);
+
+    // เขียนกลับไฟล์
+    const fs = require('fs');
+    fs.writeFileSync(filePath, JSON.stringify(missions, null, 2));
+
+    return newMission;
+  }
 }
