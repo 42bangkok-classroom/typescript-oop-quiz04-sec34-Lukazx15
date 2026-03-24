@@ -29,7 +29,7 @@ export class MissionService {
   findAll() {
     const filePath = join(process.cwd(), 'data', 'missions.json');
     const raw = readFileSync(filePath, 'utf-8');
-    const missions: IMission[] = JSON.parse(raw);
+    const missions = JSON.parse(raw) as unknown as IMission[];
 
     return missions.map((m) => {
       let durationDays = -1;
