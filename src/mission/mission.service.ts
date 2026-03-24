@@ -105,4 +105,27 @@ export class MissionService {
 
     return newMission;
   }
+
+  remove(id: string) {
+    const filePath = join(process.cwd(), 'data', 'missions.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const missions = JSON.parse(raw) as unknown as IMission[];
+
+    const index = missions.findIndex((m) => m.id === id);
+
+    // ❗ ถ้าไม่เจอ
+    if (index === -1) {
+      throw new NotFoundException('Mission not found');
+    }
+
+    // ลบออก
+    missions.splice(index, 1);
+
+    // เขียนกลับไฟล์
+    writeFileSync(filePath, JSON.stringify(missions, null, 2));
+
+    return {
+      message: `Mission ID ${id} has been successfully deleted.`,
+    };
+  }
 }
