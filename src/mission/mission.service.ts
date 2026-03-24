@@ -43,11 +43,7 @@ export class MissionService {
       }
 
       return {
-        id: m.id,
-        codename: m.codename,
-        status: m.status,
-        startDate: m.startDate,
-        endDate: m.endDate,
+        ...m,
         durationDays,
       };
     });
