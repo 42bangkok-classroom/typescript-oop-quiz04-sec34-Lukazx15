@@ -105,7 +105,7 @@ export class MissionService {
 
     return newMission;
   }
-
+  //5
   remove(id: string) {
     const filePath = join(process.cwd(), 'data', 'missions.json');
     const raw = readFileSync(filePath, 'utf-8');
@@ -113,7 +113,6 @@ export class MissionService {
 
     const index = missions.findIndex((m) => m.id === id);
 
-    // ❗ ถ้าไม่เจอ
     if (index === -1) {
       throw new NotFoundException('Mission not found');
     }
