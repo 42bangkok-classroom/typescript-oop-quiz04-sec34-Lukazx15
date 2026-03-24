@@ -1,104 +1,104 @@
 {
-    "tests": [
-        {
-            "name": "Problem 1 - Unit Test",
-            "setup": "",
-            "run": "npm run test:p01",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 1 - E2E Test",
-            "setup": "",
-            "run": "npm run test:e2e:p01",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 2 - Unit Test",
-            "setup": "",
-            "run": "npm run test:p02",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 2 - E2E Test",
-            "setup": "",
-            "run": "npm run test:e2e:p02",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 3 - Unit Test",
-            "setup": "",
-            "run": "npm run test:p03",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 3 - E2E Test",
-            "setup": "",
-            "run": "npm run test:e2e:p03",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 4 - Unit Test",
-            "setup": "",
-            "run": "npm run test:p04",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 4 - E2E Test",
-            "setup": "",
-            "run": "npm run test:e2e:p04",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 5 - Unit Test",
-            "setup": "",
-            "run": "npm run test:p05",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        },
-        {
-            "name": "Problem 5 - E2E Test",
-            "setup": "",
-            "run": "npm run test:e2e:p05",
-            "input": "",
-            "output": "",
-            "comparison": "included",
-            "timeout": 10,
-            "points": 0.5
-        }
-    ]
+  "tests": [
+    {
+      "name": "Problem 1 - Unit Test",
+      "setup": "",
+      "run": "npm run test:p01",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 1 - E2E Test",
+      "setup": "",
+      "run": "npm run test:e2e:p01",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 2 - Unit Test",
+      "setup": "",
+      "run": "npm run test:p02",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 2 - E2E Test",
+      "setup": "",
+      "run": "npm run test:e2e:p02",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 3 - Unit Test",
+      "setup": "",
+      "run": "npm run test:p03",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 3 - E2E Test",
+      "setup": "",
+      "run": "npm run test:e2e:p03",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 4 - Unit Test",
+      "setup": "",
+      "run": "npm run test:p04",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 4 - E2E Test",
+      "setup": "",
+      "run": "npm run test:e2e:p04",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 5 - Unit Test",
+      "setup": "",
+      "run": "npm run test:p05",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    },
+    {
+      "name": "Problem 5 - E2E Test",
+      "setup": "",
+      "run": "npm run test:e2e:p05",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0.5
+    }
+  ]
 }
