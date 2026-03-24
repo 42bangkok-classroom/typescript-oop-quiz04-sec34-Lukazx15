@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { IMission } from './mission.interface';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 @Injectable()
 export class MissionService {
+  // (ของเดิมใช้ข้อ 1 ได้ ไม่ต้องลบ)
   private readonly missions = [
     { id: 1, codename: 'OPERATION_STORM', status: 'ACTIVE' },
     { id: 2, codename: 'SILENT_SNAKE', status: 'COMPLETED' },
@@ -22,7 +26,31 @@ export class MissionService {
         summary[status] += 1;
       }
     }
-
     return summary;
+  }
+
+  findAll() {
+    const filePath = join(process.cwd(), 'data', 'missions.json');
+    const rawData = readFileSync(filePath, 'utf-8');
+    const missions: IMission[] = JSON.parse(rawData);
+    return missions.map((mission) => {
+      let durationDays = -1;
+      if (mission.endDate !== null) {
+        const start = new Date(mission.startDate);
+        const end = new Date(mission.endDate);
+
+        const diffTime = end.getTime() - start.getTime();
+        durationDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      }
+
+      return {
+        id: mission.id,
+        codename: mission.codename,
+        status: mission.status,
+        startDate: mission.startDate,
+        endDate: mission.endDate,
+        durationDays,
+      };
+    });
   }
 }
