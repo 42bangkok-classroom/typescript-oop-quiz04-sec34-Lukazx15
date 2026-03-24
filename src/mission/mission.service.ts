@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { IMission } from './mission.interface';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { NotFoundException } from '@nestjs/common';
+import { CreateMissionDto } from './dto/create-mission.dto/create-mission.dto';
 
 @Injectable()
 export class MissionService {
@@ -77,7 +78,7 @@ export class MissionService {
     return result;
   }
   //4
-  create(body: any) {
+  create(body: CreateMissionDto) {
     const filePath = join(process.cwd(), 'data', 'missions.json');
     const raw = readFileSync(filePath, 'utf-8');
     const missions = JSON.parse(raw) as unknown as IMission[];
@@ -100,8 +101,7 @@ export class MissionService {
     missions.push(newMission);
 
     // เขียนกลับไฟล์
-    const fs = require('fs');
-    fs.writeFileSync(filePath, JSON.stringify(missions, null, 2));
+    writeFileSync(filePath, JSON.stringify(missions, null, 2));
 
     return newMission;
   }
