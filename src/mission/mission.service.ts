@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IMission } from './mission.interface';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class MissionService {
@@ -47,5 +48,32 @@ export class MissionService {
         durationDays,
       };
     });
+  }
+
+  //3
+  findOne(id: string, clearance: string = 'STANDARD') {
+    const filePath = join(process.cwd(), 'data', 'missions.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const missions = JSON.parse(raw) as unknown as IMission[];
+
+    const mission = missions.find((m) => m.id === id);
+
+    if (!mission) {
+      throw new NotFoundException('Mission not found');
+    }
+
+    // clone object กันแก้ของจริง
+    const result = { ...mission };
+
+    const isHighRisk =
+      result.riskLevel === 'HIGH' || result.riskLevel === 'CRITICAL';
+
+    const isTopSecret = clearance === 'TOP_SECRET';
+
+    if (isHighRisk && !isTopSecret) {
+      result.targetName = '***REDACTED***';
+    }
+
+    return result;
   }
 }
