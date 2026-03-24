@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { IMission } from './mission.interface';
 import { readFileSync } from 'fs';
-import { join, parse } from 'path';
+import { join } from 'path';
 
 @Injectable()
 export class MissionService {
@@ -15,44 +15,40 @@ export class MissionService {
   ];
 
   getSummary(): Record<string, number> {
-    const summary: Record<string, number> = {};
-
-    for (let i = 0; i < this.missions.length; i++) {
-      const status = this.missions[i].status;
-      if (!summary[status]) {
-        summary[status] = 1;
-      } else {
-        summary[status] += 1;
-      }
-    }
-    return summary;
+    return this.missions.reduce(
+      (acc, mission) => {
+        const status = mission.status;
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
   }
 
-  findAll(): IMission[] {
-    const filePath = join(process.cwd(), 'data', 'mission.json');
-    const rawData = readFileSync(filePath, 'utf-8');
-    const missions: IMission[] = JSON.parse(rawData);
+  //2
+  findAll() {
+    const filePath = join(process.cwd(), 'data', 'missions.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const missions: IMission[] = JSON.parse(raw);
 
-    return missions.map((mission) => {
+    return missions.map((m) => {
       let durationDays = -1;
 
-      if (mission.endDate !== null) {
-        const start = new Date(mission.startDate);
-        const end = new Date(mission.endDate);
+      if (m.endDate !== null) {
+        const start = new Date(m.startDate);
+        const end = new Date(m.endDate);
 
-        const diffTime = end.getTime() - start.getTime();
-        durationDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const diff = end.getTime() - start.getTime();
+        durationDays = Math.floor(diff / (1000 * 60 * 60 * 24));
       }
 
       return {
-        id: mission.id,
-        codename: mission.codename,
-        status: mission.status,
-        startDate: mission.startDate,
-        endDate: mission.endDate,
+        id: m.id,
+        codename: m.codename,
+        status: m.status,
+        startDate: m.startDate,
+        endDate: m.endDate,
         durationDays,
-        targetName: mission.targetName,
-        riskLevel: mission.riskLevel,
       };
     });
   }
